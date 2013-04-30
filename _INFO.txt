@@ -1,0 +1,162 @@
+$ git diff
+diff --git a/fCal/CMakeLists.txt b/fCal/CMakeLists.txt
+index 4260fd1..e2e6a53 100644
+--- a/fCal/CMakeLists.txt
++++ b/fCal/CMakeLists.txt
+@@ -17,6 +17,7 @@ SET (fCal_SRCS
+   Toolboxes/StylusCalibrationToolbox.cxx
+   Toolboxes/PhantomRegistrationToolbox.cxx
+   Toolboxes/VolumeReconstructionToolbox.cxx
++  Toolboxes/LandmarkTransformationToolbox.cxx
+   )
+
+ if (WIN32)
+@@ -35,6 +36,7 @@ SET (fCal_UI_HDRS
+     Toolboxes/StylusCalibrationToolbox.h
+     Toolboxes/PhantomRegistrationToolbox.h
+     Toolboxes/VolumeReconstructionToolbox.h
++    Toolboxes/LandmarkTransformationToolbox.h
+   )
+
+ SET (fCal_UI_SRCS
+@@ -46,6 +48,8 @@ SET (fCal_UI_SRCS
+   Toolboxes/StylusCalibrationToolbox.ui
+   Toolboxes/PhantomRegistrationToolbox.ui
+   Toolboxes/VolumeReconstructionToolbox.ui
++  Toolboxes/LandmarkTransformationToolbox.ui
++
+   )
+
+ SET (fCal_QT_Resources
+diff --git a/fCal/fCalMainWindow.cxx b/fCal/fCalMainWindow.cxx
+index debb9ee..a7319c8 100644
+--- a/fCal/fCalMainWindow.cxx
++++ b/fCal/fCalMainWindow.cxx
+@@ -279,6 +279,21 @@ void fCalMainWindow::CreateToolboxes()
+     ui.toolbox_VolumeReconstruction->setLayout(grid);
+   }
+   m_ToolboxList[ToolboxType_VolumeReconstruction] = volumeReconstructionToolbox
++
++
++  // matrix calculation widget
++  LandmarkTransformationToolbox* landmarkTransformationToolbox = new LandmarkTr
++  //if (volumeReconstructionToolbox != NULL)
++  //{
++  //  QGridLayout* grid = new QGridLayout(ui.toolbox_VolumeReconstruction);
++  //  grid->setColumnStretch(1, 1);
++  //  grid->setRowStretch(1, 1);
++  //  grid->setMargin(5);
++  //  grid->setSpacing(0);
++  //  grid->addWidget(volumeReconstructionToolbox);
++  //  ui.toolbox_VolumeReconstruction->setLayout(grid);
++  // }
++  m_ToolboxList[ToolboxType_VolumeReconstruction] = landmarkTransformationToolb
+ }
+
+ //-----------------------------------------------------------------------------
+diff --git a/fCal/fCalMainWindow.ui b/fCal/fCalMainWindow.ui
+index 9603ee2..d65ba40 100644
+--- a/fCal/fCalMainWindow.ui
++++ b/fCal/fCalMainWindow.ui
+@@ -231,7 +231,7 @@
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="currentIndex">
+-         <number>0</number>
++         <number>7</number>
+         </property>
+         <widget class="QWidget" name="toolbox_Configuration">
+          <property name="geometry">
+@@ -239,7 +239,7 @@
+            <x>0</x>
+            <y>0</y>
+            <width>248</width>
+-           <height>478</height>
++           <height>451</height>
+           </rect>
+          </property>
+          <attribute name="label">
+@@ -251,8 +251,8 @@
+           <rect>
+            <x>0</x>
+            <y>0</y>
+-           <width>248</width>
+-           <height>478</height>
++           <width>98</width>
++           <height>28</height>
+           </rect>
+          </property>
+          <attribute name="label">
+@@ -265,7 +265,7 @@
+            <x>0</x>
+            <y>0</y>
+            <width>248</width>
+-           <height>478</height>
++           <height>451</height>
+           </rect>
+          </property>
+          <attribute name="label">
+@@ -277,8 +277,8 @@
+           <rect>
+            <x>0</x>
+            <y>0</y>
+-           <width>248</width>
+-           <height>478</height>
++           <width>98</width>
++           <height>28</height>
+           </rect>
+          </property>
+          <attribute name="label">
+@@ -290,8 +290,8 @@
+           <rect>
+            <x>0</x>
+            <y>0</y>
+-           <width>248</width>
+-           <height>478</height>
++           <width>98</width>
++           <height>28</height>
+           </rect>
+          </property>
+          <attribute name="label">
+@@ -303,8 +303,8 @@
+           <rect>
+            <x>0</x>
+            <y>0</y>
+-           <width>248</width>
+-           <height>478</height>
++           <width>98</width>
++           <height>28</height>
+           </rect>
+          </property>
+          <attribute name="label">
+@@ -316,14 +316,27 @@
+           <rect>
+            <x>0</x>
+            <y>0</y>
+-           <width>248</width>
+-           <height>478</height>
++           <width>98</width>
++           <height>28</height>
+           </rect>
+          </property>
+          <attribute name="label">
+           <string>Volume reconstruction</string>
+          </attribute>
+         </widget>
++        <widget class="QWidget" name="toolbox_LandmarkTransformation">
++         <property name="geometry">
++          <rect>
++           <x>0</x>
++           <y>0</y>
++           <width>248</width>
++           <height>451</height>
++          </rect>
++         </property>
++         <attribute name="label">
++          <string>Strona</string>
++         </attribute>
++        </widget>
+        </widget>
+       </item>
+      </layout>
+

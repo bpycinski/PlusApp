@@ -17,6 +17,7 @@ SET (fCal_SRCS
   Toolboxes/StylusCalibrationToolbox.cxx
   Toolboxes/PhantomRegistrationToolbox.cxx
   Toolboxes/VolumeReconstructionToolbox.cxx
+  Toolboxes/LandmarkTransformationToolbox.cxx
   )
 
 if (WIN32)  
@@ -35,6 +36,7 @@ SET (fCal_UI_HDRS
     Toolboxes/StylusCalibrationToolbox.h
     Toolboxes/PhantomRegistrationToolbox.h
     Toolboxes/VolumeReconstructionToolbox.h
+    Toolboxes/LandmarkTransformationToolbox.h
   )
 
 SET (fCal_UI_SRCS
@@ -46,6 +48,7 @@ SET (fCal_UI_SRCS
   Toolboxes/StylusCalibrationToolbox.ui
   Toolboxes/PhantomRegistrationToolbox.ui
   Toolboxes/VolumeReconstructionToolbox.ui
+  Toolboxes/LandmarkTransformationToolbox.ui
   )
 
 SET (fCal_QT_Resources

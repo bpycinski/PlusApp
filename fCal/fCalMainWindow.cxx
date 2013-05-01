@@ -14,6 +14,7 @@ See License.txt for details.
 #include "StylusCalibrationToolbox.h"
 #include "TemporalCalibrationToolbox.h"
 #include "VolumeReconstructionToolbox.h"
+#include "LandmarkTransformationToolbox.h"
 #include "fCalMainWindow.h"
 #include "vtkRenderWindow.h"
 #include "vtkVirtualDiscCapture.h"
@@ -183,7 +184,7 @@ void fCalMainWindow::CreateToolboxes()
   LOG_TRACE("fCalMainWindow::CreateToolboxes");
 
   // Resize toolbox list to the number of toolboxes
-  m_ToolboxList.resize(7);
+  m_ToolboxList.resize(8);
 
   // Configuration widget
   ConfigurationToolbox* configurationToolbox = new ConfigurationToolbox(this);
@@ -279,6 +280,22 @@ void fCalMainWindow::CreateToolboxes()
     ui.toolbox_VolumeReconstruction->setLayout(grid);
   }
   m_ToolboxList[ToolboxType_VolumeReconstruction] = volumeReconstructionToolbox;
+
+  // matrix calculation widget
+  LandmarkTransformationToolbox* landmarkTransformationToolbox = new LandmarkTransformationToolbox(this);
+  if (landmarkTransformationToolbox != NULL)
+  {
+    QGridLayout* grid = new QGridLayout(ui.toolbox_LandmarkTransformation);
+    grid->setColumnStretch(1, 1);
+    grid->setRowStretch(1, 1);
+    grid->setMargin(5);
+    grid->setSpacing(0);
+    grid->addWidget(landmarkTransformationToolbox);
+    ui.toolbox_LandmarkTransformation->setLayout(grid);
+   }
+  m_ToolboxList[ToolboxType_LandmarkTransformation] = landmarkTransformationToolbox;
+ 
+
 }
 
 //-----------------------------------------------------------------------------
@@ -344,6 +361,10 @@ void fCalMainWindow::CurrentToolboxChanged(int aToolboxIndex)
   else if (currentToolboxText == QString("Volume reconstruction"))
   {
     m_ActiveToolbox = ToolboxType_VolumeReconstruction;
+  }
+  else if (currentToolboxText == QString("Landmark transformation"))
+  {
+    m_ActiveToolbox = ToolboxType_LandmarkTransformation;
   }
   else
   {

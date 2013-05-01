@@ -20,6 +20,7 @@ SET (CommonWidgets_SRCS
   vtk3DObjectVisualizer.cxx
   CaptureControlWidget.cxx 
   QCustomAction.cxx 
+  LandmarkTransformationWidget.cxx
   )
 
 if (WIN32)	
@@ -40,13 +41,15 @@ SET (CommonWidgets_UI_HDRS
     vtk3DObjectVisualizer.h
     CaptureControlWidget.h 
     QCustomAction.h 
+	LandmarkTransformationWidget.h
   )
 
 SET (CommonWidgets_UI_SRCS
   DeviceSetSelectorWidget.ui
   ConfigFileSaverDialog.ui
   SegmentationParameterDialog.ui
-  CaptureControlWidget.ui 
+  CaptureControlWidget.ui
+LandmarkTransformationWidget.ui  
   )	
 
 SET (QT_Resources

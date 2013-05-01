@@ -9,6 +9,7 @@
 
 #include <QWidget>
 
+class LandmarkTransformationWidget;
 
 /*! \class LandmarkTransformationToolbbox 
 * \brief Landmark Transformation toolbox class
@@ -30,6 +31,17 @@ public:
   virtual void RefreshContent();
   virtual void SetDisplayAccordingToState();
 
+
+protected:
+	/*! core window of the module */ 
+	LandmarkTransformationWidget* m_TransformWidget;
+	QPushButton* but;
+	/*! Index of current landmark */
+	int m_CurrentLandmarkIndex;
+
+protected slots:
+    void OpenTransform();
+	void CloseTransform();
 
 protected:
   Ui::LandmarkTransformationToolbox ui;

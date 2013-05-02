@@ -42,6 +42,7 @@ protected:
 protected slots:
     void OpenTransform();
 	void CloseTransform();
+    void AddRecordedPoint();
 
 protected:
   Ui::LandmarkTransformationToolbox ui;

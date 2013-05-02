@@ -13,8 +13,10 @@
 // Constructor
 LandmarkTransformationWidget::LandmarkTransformationWidget(QWidget* aParent) 
 : QWidget(aParent)
+, m_currentRowIndex(0)
 {
   ui.setupUi(this);
+  connect (ui.pushButton_record, SIGNAL(clicked()), this, SLOT(recordPoint())); 
 };
 
 LandmarkTransformationWidget::~LandmarkTransformationWidget()
@@ -26,7 +28,25 @@ LandmarkTransformationWidget::~LandmarkTransformationWidget()
 
 void LandmarkTransformationWidget::changePointsAmount(int nr) {
 	ui.tableWidget->setRowCount(nr);
+}
 
+void LandmarkTransformationWidget::recordPoint(void) {
+	emit(recorded());
+}
+
+bool LandmarkTransformationWidget::addPoint(double coords [3]) {
+	//TODO index <= rowCount ?
+	QTableWidgetItem* item;
+	for (int i=0; i<3; ++i) {
+		item = ui.tableWidget->item(m_currentRowIndex, i+3);
+		if (item) {
+			item->setText(QString::number(coords[i],',',3));
+		} else {
+			ui.tableWidget->setItem(m_currentRowIndex,i+3,new QTableWidgetItem(QString::number(coords[i],',',3)));
+		}
+	} 
+	++m_currentRowIndex;
+	return PLUS_SUCCESS;
 
 }
 
@@ -130,6 +150,7 @@ void LandmarkTransformationWidget::computeMatrix(void) {
 }
 
 void LandmarkTransformationWidget::clear() {
+	m_currentRowIndex = 0;
 	for (int i=0; i<ui.tableWidget->rowCount(); ++i) {
 		for (int j=0; j<ui.tableWidget->columnCount(); ++j) {
 			QTableWidgetItem* item = ui.tableWidget->item(i, j);

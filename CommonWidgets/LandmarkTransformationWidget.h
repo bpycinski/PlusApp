@@ -26,7 +26,13 @@ public:
   LandmarkTransformationWidget(QWidget* aParent=0) ; 
   ~LandmarkTransformationWidget();
 
-public slots:
+
+  bool addPoint(double coords [3]);
+
+signals:
+  void recorded();
+  
+  public slots:
 
 //  virtual void slotOpenFile();
 //  virtual void slotExit();
@@ -36,6 +42,7 @@ protected:
 protected slots:
     void changePointsAmount(int nr);
     void computeMatrix(void);
+	void recordPoint(void);
 	void clear();
 private:
 
@@ -43,7 +50,9 @@ private:
 	vtkPoints* m_PointsTarget;
 	vtkMatrix4x4* m_transformMatrix; 
 //  vtkSmartPointer<vtkQtTableView>         TableView;
-    
+	int m_currentRowIndex;
+
+
   // Designer form
 	Ui::LandmarkTransformationWidget ui;
 };

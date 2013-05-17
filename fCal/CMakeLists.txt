@@ -13,6 +13,7 @@ SET (fCal_SRCS
   Toolboxes/ConfigurationToolbox.cxx
   Toolboxes/CapturingToolbox.cxx
   Toolboxes/SpatialCalibrationToolbox.cxx
+  Toolboxes/SingleWallCalibrationToolbox.cxx
   Toolboxes/TemporalCalibrationToolbox.cxx
   Toolboxes/StylusCalibrationToolbox.cxx
   Toolboxes/PhantomRegistrationToolbox.cxx
@@ -32,6 +33,7 @@ SET (fCal_UI_HDRS
     Toolboxes/ConfigurationToolbox.h
     Toolboxes/CapturingToolbox.h
     Toolboxes/SpatialCalibrationToolbox.h
+    Toolboxes/SingleWallCalibrationToolbox.h
     Toolboxes/TemporalCalibrationToolbox.h
     Toolboxes/StylusCalibrationToolbox.h
     Toolboxes/PhantomRegistrationToolbox.h
@@ -44,6 +46,7 @@ SET (fCal_UI_SRCS
   Toolboxes/ConfigurationToolbox.ui
   Toolboxes/CapturingToolbox.ui
   Toolboxes/SpatialCalibrationToolbox.ui
+  Toolboxes/SingleWallCalibrationToolbox.ui
   Toolboxes/TemporalCalibrationToolbox.ui
   Toolboxes/StylusCalibrationToolbox.ui
   Toolboxes/PhantomRegistrationToolbox.ui

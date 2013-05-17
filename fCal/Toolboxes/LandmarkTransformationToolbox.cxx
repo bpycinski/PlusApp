@@ -87,16 +87,14 @@ LandmarkTransformationToolbox::~LandmarkTransformationToolbox(void)
   // Add point to registration algorithm
   if (!valid)
   {
-    LOG_WARNING("Invalid stylus tip to reference transform - cannot be added!");
+    LOG_WARNING("Invalid stylus tip transform - cannot be added!");
     return;
   }
 
   double stylusTipPosition[3] = {stylusTipToReferenceTransformMatrix->GetElement(0,3), stylusTipToReferenceTransformMatrix->GetElement(1,3), stylusTipToReferenceTransformMatrix->GetElement(2,3) };
 
 
-
-
-
+LOG_INFO("Acquired position " << stylusTipPosition[0] << stylusTipPosition[1] << stylusTipPosition[2] );
 
 
 

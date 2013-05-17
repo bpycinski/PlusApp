@@ -35,7 +35,6 @@ enum ToolboxType
   ToolboxType_Capturing,
   ToolboxType_VolumeReconstruction,
   ToolboxType_SingleWallCalibration,
-  ToolboxType_LandmarkTransformation,
   ToolboxType_Count,
 };
 

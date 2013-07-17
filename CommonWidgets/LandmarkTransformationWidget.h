@@ -44,6 +44,8 @@ protected slots:
     void computeMatrix(void);
 	void recordPoint(void);
 	void clear();
+	void save();
+
 private:
 
 	vtkPoints* m_PointsSource;

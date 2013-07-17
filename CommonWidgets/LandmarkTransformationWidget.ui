@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>579</width>
-    <height>599</height>
+    <width>599</width>
+    <height>864</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -16,7 +16,7 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,10">
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="sizePolicy">
@@ -53,6 +53,9 @@
         <property name="minimum">
          <number>3</number>
         </property>
+        <property name="value">
+         <number>9</number>
+        </property>
        </widget>
       </item>
       <item>
@@ -85,9 +88,12 @@
      <property name="title">
       <string/>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,4,0">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="spacing">
+         <number>7</number>
+        </property>
         <item>
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
@@ -104,7 +110,7 @@
         <item>
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>Insert current position</string>
+           <string>Zapisz aktualną pozycję</string>
           </property>
          </widget>
         </item>
@@ -159,17 +165,47 @@
         </attribute>
         <row>
          <property name="text">
-          <string>1</string>
+          <string>Processus xyphoideus</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>2</string>
+          <string>Arcus costae dexter</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>3</string>
+          <string>Arcus costae sinister</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Spina iliaca a. s. dextra</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Spina iliaca a. s. sinistra</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Trochanter maios dexter</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Trochanter maior sinister</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Umbilicus</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Symphysis pubica</string>
          </property>
         </row>
         <column>
@@ -205,7 +241,10 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+        <property name="spacing">
+         <number>3</number>
+        </property>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0">
           <property name="sizeConstraint">
@@ -236,20 +275,36 @@
          </layout>
         </item>
         <item>
-         <widget class="QDialogButtonBox" name="buttonBox">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="standardButtons">
-           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-          </property>
-          <property name="centerButtons">
-           <bool>true</bool>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QPushButton" name="pushButton_oblicz">
+            <property name="text">
+             <string>Oblicz macierz</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_zapisz">
+            <property name="text">
+             <string>Zapisz do pliku...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_wyczysc">
+            <property name="text">
+             <string>Wyczyść wszystko</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_zakoncz">
+            <property name="text">
+             <string>Zakończ</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
@@ -277,37 +332,59 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
+   <sender>pushButton_oblicz</sender>
+   <signal>clicked()</signal>
    <receiver>LandmarkTransformationWidget</receiver>
    <slot>computeMatrix()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>536</x>
-     <y>587</y>
+     <x>509</x>
+     <y>465</y>
     </hint>
     <hint type="destinationlabel">
-     <x>500</x>
-     <y>332</y>
+     <x>289</x>
+     <y>330</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
+   <sender>pushButton_zapisz</sender>
+   <signal>clicked()</signal>
    <receiver>LandmarkTransformationWidget</receiver>
-   <slot>clear()</slot>
+   <slot>save()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>536</x>
-     <y>583</y>
+     <x>20</x>
+     <y>20</y>
     </hint>
     <hint type="destinationlabel">
-     <x>500</x>
-     <y>323</y>
+     <x>20</x>
+     <y>20</y>
     </hint>
    </hints>
   </connection>
+   <connection>
+     <sender>pushButton_wyczysc</sender>
+     <signal>clicked()</signal>
+     <receiver>LandmarkTransformationWidget</receiver>
+     <slot>clear()</slot>
+     <hints>
+       <hint type="sourcelabel">
+         <x>20</x>
+         <y>20</y>
+       </hint>
+       <hint type="destinationlabel">
+         <x>20</x>
+         <y>20</y>
+       </hint>
+     </hints>
+   </connection>
+   <connection>
+     <sender>pushButton_zakoncz</sender>
+     <signal>clicked()</signal>
+     <receiver>LandmarkTransformationWidget</receiver>
+     <slot>close()</slot>
+   </connection>
  </connections>
  <slots>
   <slot>changePointsAmount(int)</slot>

@@ -11,8 +11,9 @@ See License.txt for details.
 #include "PlusConfigure.h"
 #include "ui_SingleWallCalibrationToolbox.h"
 #include <QWidget>
-class vtkTrackedFrameList;
+class vtkLineSegmentationAlgo;
 class vtkSingleWallCalibrationAlgo;
+class vtkTrackedFrameList;
 
 //-----------------------------------------------------------------------------
 
@@ -78,15 +79,22 @@ protected slots:
   /*! Slot handling cancel calibration event (button click or explicit call) */
   void CancelCalibration();
 
+  void SingleFrame();
+
 protected:
   /*! Calibration algorithm */
   vtkSingleWallCalibrationAlgo* m_Calibration;
+
+  vtkLineSegmentationAlgo* m_Segmentation;
 
   /*! Tracked frame data for spatial calibration */
   vtkTrackedFrameList* m_SpatialCalibrationData;
 
   /*! Tracked frame data for validation of spatial calibration */
   vtkTrackedFrameList* m_SpatialValidationData;
+
+  vtkTrackedFrameList* m_RecordingBuffer;
+  int m_SingleFrameCount;
 
   /*! Timestamp of last recorded frame (the tracked frames acquired since this timestamp will be recorded) */
   double m_LastRecordedFrameTimestamp;

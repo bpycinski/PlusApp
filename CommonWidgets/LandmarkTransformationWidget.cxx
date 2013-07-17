@@ -9,11 +9,16 @@
 #include <vector>
 #include <vtkSmartPointer.h>
 #include <iomanip>
+#include <QDateTime>
+#include <QFileDialog>
+#include <stdexcept>
+#include <QMessageBox>
 
 // Constructor
 LandmarkTransformationWidget::LandmarkTransformationWidget(QWidget* aParent) 
 : QWidget(aParent)
 , m_currentRowIndex(0)
+, m_transformMatrix(0)
 {
   ui.setupUi(this);
   connect (ui.pushButton_record, SIGNAL(clicked()), this, SLOT(recordPoint())); 
@@ -151,6 +156,7 @@ void LandmarkTransformationWidget::computeMatrix(void) {
 
 void LandmarkTransformationWidget::clear() {
 	m_currentRowIndex = 0;
+	m_transformMatrix = 0;
 	for (int i=0; i<ui.tableWidget->rowCount(); ++i) {
 		for (int j=0; j<ui.tableWidget->columnCount(); ++j) {
 			QTableWidgetItem* item = ui.tableWidget->item(i, j);
@@ -160,4 +166,43 @@ void LandmarkTransformationWidget::clear() {
 			}
 		}
 	}
+	ui.textEdit->clear();
+}
+
+void LandmarkTransformationWidget::save() {
+	QString s = QFileDialog::getOpenFileName("./", "All Files (*.*)", this,				"open file dialog", "Choose a file..." );
+	
+	std::ostringstream oss;
+
+	oss << "****************************************\n"  
+		<< QDateTime::currentDateTime().toString().toStdString() 
+		<< std::endl;
+	
+	if (m_transformMatrix) {
+		oss << "Transformation Matrix\n";
+		m_transformMatrix->Print (oss );
+	}
+
+
+	for (int i=0; i<ui.tableWidget->rowCount(); ++i) {
+		for (int j=0; j<ui.tableWidget->columnCount(); ++j) {
+			QTableWidgetItem* item = ui.tableWidget->item(i, j);
+			oss << ((!item||item->text().isEmpty()) 
+				    ? "     "
+					: item ->text().toStdString() )  ;
+		}
+		oss << "\n";
+	}
+
+	oss << ui.textEdit->toPlainText().toStdString();
+	oss	<< std::endl;;
+	
+	try {
+		std::ofstream of (s.toStdString().c_str(), std::ios::app );
+		of << oss.str() << std::endl ;
+		of.close();
+	} catch (std::ios_base::failure ex) {
+		QMessageBox::critical (this, tr("Zapis siê nie powiód³"), tr("Nie uda³o siê zapisaæ danych. \nNieznany b³¹d Wejœcia/Wyjœcia. \nWykonaj printscreen i zapisz!"));
+	}
+
 }

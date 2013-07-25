@@ -78,6 +78,7 @@ LandmarkTransformationToolbox::~LandmarkTransformationToolbox(void)
   // Acquire point
   vtkSmartPointer<vtkMatrix4x4> stylusTipToReferenceTransformMatrix = vtkSmartPointer<vtkMatrix4x4>::New();
   bool valid = false;
+
   if (m_ParentMainWindow->GetVisualizationController()->GetTransformMatrix("StylusTip", "Tracker", stylusTipToReferenceTransformMatrix, &valid) != PLUS_SUCCESS)
   {
     LOG_ERROR("No transform found between stylus and reference!");

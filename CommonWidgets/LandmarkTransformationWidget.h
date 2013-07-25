@@ -45,6 +45,7 @@ protected slots:
 	void recordPoint(void);
 	void clear();
 	void save();
+	void activeItemChanged(int row, int column);
 
 private:
 

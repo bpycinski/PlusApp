@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>599</width>
-    <height>864</height>
+    <width>715</width>
+    <height>922</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -88,7 +88,7 @@
      <property name="title">
       <string/>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,4,0">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="spacing">
@@ -155,7 +155,7 @@
       <item>
        <widget class="QTableWidget" name="tableWidget">
         <attribute name="horizontalHeaderDefaultSectionSize">
-         <number>75</number>
+         <number>100</number>
         </attribute>
         <attribute name="horizontalHeaderMinimumSectionSize">
          <number>10</number>
@@ -163,6 +163,29 @@
         <attribute name="horizontalHeaderStretchLastSection">
          <bool>false</bool>
         </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>30</number>
+        </attribute>
+        <row>
+         <property name="text">
+          <string>Punkt A</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Punkt B</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Punkt C</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Punkt D</string>
+         </property>
+        </row>
         <row>
          <property name="text">
           <string>Processus xyphoideus</string>
@@ -210,21 +233,6 @@
         </row>
         <column>
          <property name="text">
-          <string>x</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>y</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>z</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
           <string>X</string>
          </property>
         </column>
@@ -236,6 +244,11 @@
         <column>
          <property name="text">
           <string>Z</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Uwagi</string>
          </property>
         </column>
        </widget>
@@ -258,7 +271,7 @@
              </font>
             </property>
             <property name="text">
-             <string>   Macierz transformacji</string>
+             <string>Uwagi</string>
             </property>
            </widget>
           </item>
@@ -363,28 +376,38 @@
     </hint>
    </hints>
   </connection>
-   <connection>
-     <sender>pushButton_wyczysc</sender>
-     <signal>clicked()</signal>
-     <receiver>LandmarkTransformationWidget</receiver>
-     <slot>clear()</slot>
-     <hints>
-       <hint type="sourcelabel">
-         <x>20</x>
-         <y>20</y>
-       </hint>
-       <hint type="destinationlabel">
-         <x>20</x>
-         <y>20</y>
-       </hint>
-     </hints>
-   </connection>
-   <connection>
-     <sender>pushButton_zakoncz</sender>
-     <signal>clicked()</signal>
-     <receiver>LandmarkTransformationWidget</receiver>
-     <slot>close()</slot>
-   </connection>
+  <connection>
+   <sender>pushButton_wyczysc</sender>
+   <signal>clicked()</signal>
+   <receiver>LandmarkTransformationWidget</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_zakoncz</sender>
+   <signal>clicked()</signal>
+   <receiver>LandmarkTransformationWidget</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>changePointsAmount(int)</slot>
